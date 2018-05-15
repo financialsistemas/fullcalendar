@@ -156,38 +156,19 @@ export default class ListView extends View {
     let i
     let tableEl = $('<table class="fc-list-table ' + this.calendar.theme.getClass('tableList') + '"><tbody/></table>')
     let tbodyEl = tableEl.find('tbody')
-    let invertListView = this.opt('invertListView')
 
-    if (invertListView) {
-      for (dayIndex = segsByDay.length; dayIndex >= 0; dayIndex--) {
-        daySegs = segsByDay[dayIndex]
+    for (dayIndex = segsByDay.length; dayIndex > 0; dayIndex--) {
+      daySegs = segsByDay[dayIndex]
 
-        if (daySegs) { // sparse array, so might be undefined
+      if (daySegs) { // sparse array, so might be undefined
 
-          // append a day header
-          tbodyEl.append(this.dayHeaderHtml(this.dayDates[dayIndex]))
+        // append a day header
+        tbodyEl.append(this.dayHeaderHtml(this.dayDates[dayIndex]))
 
-          this.eventRenderer.sortEventSegs(daySegs)
+        this.eventRenderer.sortEventSegs(daySegs)
 
-          for (i = 0; i < daySegs.length; i++) {
-            tbodyEl.append(daySegs[i].el) // append event row
-          }
-        }
-      }
-    } else {
-      for (dayIndex = 0; dayIndex < segsByDay.length; dayIndex++) {
-        daySegs = segsByDay[dayIndex]
-
-        if (daySegs) { // sparse array, so might be undefined
-
-          // append a day header
-          tbodyEl.append(this.dayHeaderHtml(this.dayDates[dayIndex]))
-
-          this.eventRenderer.sortEventSegs(daySegs)
-
-          for (i = 0; i < daySegs.length; i++) {
-            tbodyEl.append(daySegs[i].el) // append event row
-          }
+        for (i = 0; i < daySegs.length; i++) {
+          tbodyEl.append(daySegs[i].el) // append event row
         }
       }
     }
