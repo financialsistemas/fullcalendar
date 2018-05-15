@@ -157,7 +157,7 @@ export default class ListView extends View {
     let tableEl = $('<table class="fc-list-table ' + this.calendar.theme.getClass('tableList') + '"><tbody/></table>')
     let tbodyEl = tableEl.find('tbody')
 
-    for (dayIndex = 0; dayIndex < segsByDay.length; dayIndex++) {
+    for (dayIndex = segsByDay.length; dayIndex > 0; dayIndex--) {
       daySegs = segsByDay[dayIndex]
 
       if (daySegs) { // sparse array, so might be undefined
