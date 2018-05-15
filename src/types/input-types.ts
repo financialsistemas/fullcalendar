@@ -217,6 +217,7 @@ export interface OptionsInputBase {
   eventLongPressDelay?: number
   droppable?: boolean
   dropAccept?: string | ((draggable: any) => boolean)
+  invertListView?: boolean
 
   viewRender?(view: View, element: JQuery): void
   viewDestroy?(view: View, element: JQuery): void
